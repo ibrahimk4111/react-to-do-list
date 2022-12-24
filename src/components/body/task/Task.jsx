@@ -40,9 +40,6 @@ const Task = ({ task }) => {
         </div>
         
         <p>
-          {task.id}
-        </p>
-        <p>
           {task.taskValue}
         </p>
         <p>
