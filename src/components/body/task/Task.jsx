@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import UserContext from '../../context/UserContext';
 
 const Task = ({ task }) => {
-  const {deleteTask, editTask, doneTask} = useContext(UserContext)
+  const {deleteTask, setId, doneTask} = useContext(UserContext)
 
   return (
     <>
@@ -28,7 +28,7 @@ const Task = ({ task }) => {
           <motion.button
             className='border-2 w-14 h-7 rounded-full bg-gray-500 mx-2 text-white text-sm'
             whileTap={{ scale: 2 }}
-            onClick={()=>editTask(task.id)}
+            onClick={()=>setId(task.id)}
           >Edit</motion.button>
 
         {/* Done Green Button*/}

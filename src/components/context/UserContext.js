@@ -11,9 +11,9 @@ export const TaskProvider = ({ children }) => {
             : []
     );
 
+
     const addTasks = (taskValue, completeValue, date) => {
         const oldTask = JSON.parse(localStorage.getItem("tasks"));
-
         const newTask = {
             id: uuid6(),
             taskValue,
@@ -38,9 +38,25 @@ export const TaskProvider = ({ children }) => {
     };
   
     //Edit Task
-    const editTask = (id) => {
-        console.log(id)
-    };
+  const [PopUp, setPopUp] = useState({ in: false, item: null });
+  const [oldTaskValue, setOldTaskValue] = useState({TKVL:"", comVL:""})
+  const setId = (id) => {
+    const index = tasks.findIndex((task) => task.id === id);
+    setPopUp({ in: !PopUp.in, item: tasks[index] });
+    setOldTaskValue ({TKVL: tasks[index].taskValue, comVL: tasks[index].completeValue})
+  };
+
+  const editTask = (taskValue, completeValue, date) => {
+    const newTask = [...tasks];
+    const index = newTask.findIndex((task) => task.id === PopUp.item.id);
+    newTask[index].taskValue = taskValue;
+    newTask[index].completeValue = completeValue;
+    newTask[index].date = date;
+    setTasks(newTask);
+
+    localStorage.setItem("tasks", JSON.stringify(newTask));
+  };
+
 
     // Done Task
     const doneTask = (id) => {
@@ -52,7 +68,11 @@ export const TaskProvider = ({ children }) => {
                 tasks,
                 addTasks,
                 deleteTask,
+                PopUp, 
+                setPopUp,
+                oldTaskValue,
                 editTask,
+                setId,
                 doneTask
             }}
         >
