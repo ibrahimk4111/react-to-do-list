@@ -21,6 +21,7 @@ const PopUp = () => {
       editTask(taskValue, completeValue, date);
     }
     setPopUp({ in: false, item: null });
+    taskRef.current.value="";
   };
 
   return (
