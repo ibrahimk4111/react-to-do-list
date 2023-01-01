@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import UserContext from '../context/UserContext';
-import Task from './task/Task';
+import Task from './Task';
 
 const ToDoBody = () => {
 const {tasks} = useContext(UserContext)
