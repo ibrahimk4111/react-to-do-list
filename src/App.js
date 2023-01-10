@@ -4,15 +4,15 @@ import ToDoBody from "./components/body/ToDoBody";
 import { TaskProvider } from "./components/context/UserContext";
 import OverLay from "./components/OverLay/OverLay";
 import PopUp from "./components/PopUp/PopUp";
-import ToDoHead from "./components/head/ToDoHead";
+// import ToDoHead from "./components/head/ToDoHead";
 
 const App = () => {
   return (
     <TaskProvider>
       <OverLay />
       <PopUp />
-      <ToDoHead />
 
+      {/* <ToDoHead /> */}
       <AddTaskBtn />
       <ToDoBody />
     </TaskProvider>

@@ -43,7 +43,7 @@ export const TaskProvider = ({ children }) => {
   };
 
   //Edit Task
-  const [oldTaskValue, setOldTaskValue] = useState({ value: "" });
+  const [oldTaskValue, setOldTaskValue] = useState({ taskValue: "" });
   const [PopUp, setPopUp] = useState({ in: false, item: null });
 
   const setId = (id) => {
@@ -51,13 +51,14 @@ export const TaskProvider = ({ children }) => {
     const index = newTask.findIndex((task) => task.id === id);
     setPopUp({ in: !PopUp.in, item: newTask[index] });
     setModalDirection({ text: "Edit" });
-    setOldTaskValue({ value: newTask[index].taskValue });
+    setOldTaskValue({ taskValue: newTask[index].taskValue });
   };
 
   const editTask = (taskValue) => {
     const newTask = [...tasks];
     const index = newTask.findIndex((task) => task.id === PopUp.item.id);
     newTask[index].taskValue = taskValue;
+
     setTasks(newTask);
 
     localStorage.setItem("tasks", JSON.stringify(newTask));
@@ -71,6 +72,12 @@ export const TaskProvider = ({ children }) => {
     setTasks(newTask);
 
     localStorage.setItem("tasks", JSON.stringify(newTask));
+  };
+
+  //dropDown
+  const [dropDownValue, setDropDownValue] = useState("all");
+  const dropDown = (e) => {
+    setDropDownValue(e.target.value);
   };
 
   return (
@@ -87,6 +94,8 @@ export const TaskProvider = ({ children }) => {
         editTask,
         setId,
         doneTask,
+        dropDownValue,
+        dropDown,
       }}
     >
       {children}

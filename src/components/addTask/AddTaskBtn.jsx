@@ -1,32 +1,40 @@
-
 import { motion } from "framer-motion";
 import React, { useContext } from "react";
 import UserContext from "../context/UserContext";
 // import ToDoModal from './TaskModal';
 
 const AddTaskBtn = () => {
-    const {popupHandle} = useContext(UserContext);
+  const { popupHandle, dropDown } = useContext(UserContext);
 
   return (
-    <div className="flex justify-center items-center">
-      <motion.div
-        className="text-center flex  justify-between p-5 border-2 w-1/2 rounded-md"
-        animate={{
-          boxShadow: "2px 2px 20px rgba(0, 0, 0, 0.2)",
-        }}
-      >
-        <button className="px-3 py-1.5 rounded-full bg-cyan-300 hover:bg-cyan-600 cursor-pointer hover:text-white"
-        onClick={popupHandle}
+    <motion.div
+      className="flex justify-between items-center p-5 rounded-md border-gray-800"
+      animate={{
+        boxShadow: "2px 2px 20px rgba(0, 0, 0, 0.2)",
+      }}
+    >
+      <div>
+        <button
+          className="rounded-full p-1 px-2 bg-cyan-300 hover:bg-cyan-600 cursor-pointer hover:text-white"
+          onClick={popupHandle}
         >
-          Add Task
+          Add
         </button>
-        <select className="p-1 rounded bg-cyan-300">
-          <option value={true} selected>All</option>
-          <option value={true}>Completed</option>
-          <option value={false}>Uncompleted</option>
+      </div>
+      <div>
+        <h1 className=" text-xl "> T O D O S</h1>
+      </div>
+      <div>
+        <select
+          className="border-2 p-1 rounded-full bg-cyan-100"
+          onClick={dropDown}
+        >
+          <option value="all">All</option>
+          <option value="done">Completed</option>
+          <option value="undone">Uncompleted</option>
         </select>
-      </motion.div>
-    </div>
+      </div>
+    </motion.div>
   );
 };
 

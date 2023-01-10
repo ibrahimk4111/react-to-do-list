@@ -10,6 +10,7 @@ const PopUp = () => {
   const { modalDirection, PopUp, setPopUp, addTasks, editTask, oldTaskValue } =
     useContext(UserContext);
 
+    
   const handleSubmit = (e, isOk) => {
     e.preventDefault();
 
@@ -50,14 +51,15 @@ const PopUp = () => {
       <ToastContainer />
       <div className={PopUp.in === false ? "pop-up" : "pop-up pop-up-show"}>
         <h4 className="text-xl mb-5 font-bold">
-          {modalDirection.text === "Add" ? "Add Task" : "Update Task"}
+          {modalDirection.text === "Add" ? "Add" : "Update Task"}
         </h4>
 
         <form onSubmit={(e) => handleSubmit(e, true)}>
           <div>
             <textarea
               ref={taskRef}
-              defaultValue={oldTaskValue.value}
+              placeholder={oldTaskValue.taskValue}
+              defaultValue={oldTaskValue.taskValue}
               type="text"
               className=" textarea textarea-bordered w-full "
             />
