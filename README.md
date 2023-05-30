@@ -15,7 +15,7 @@ After that Open the VSCODE terminal:
 
 Open 'package.json' file and write
 
-            "homepage": "https://ibrahimk4111{User Name}.github.io/{App Name}"
+            "homepage": "https://{User Name}.github.io/{App Name}"
             
             "scripts": {
                 "predeploy": "npm run build",
